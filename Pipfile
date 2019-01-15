@@ -10,6 +10,7 @@ pylint = "*"
 pydocstyle = "*"
 pep8 = "*"
 flake8 = "*"
+pandas = "*"
 
 [packages]
 django = "*"
