@@ -1,9 +1,14 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Project
 
 
 def project_list_view(request):
     projects = get_list_or_404(Project)
+    paginator = Paginator(projects, 20)
+
+    page = request.GET.get('page')
+    projects = paginator.get_page(page)
 
     context = {
         'project': projects,
