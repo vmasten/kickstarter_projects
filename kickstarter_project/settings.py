@@ -32,6 +32,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 INSTALLED_APPS = [
     'kickstarter_project',
+    'sass_processor',
     'project_data',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -129,5 +130,30 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+
+# SASS Processor
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+SASS_PROCESSOR_ENABLED = os.environ.get('DEBUG', False) == 'True'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
+
+REDIS_URL = 'redis://{}:6379/1'.format(os.getenv('REDIS_HOST'))
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': REDIS_URL,
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        },
+        'KEY_PREFIX': 'example'
+    }
+}
+
+# cache timeout
+CACHE_TTL = 60 * 1
