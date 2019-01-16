@@ -15,6 +15,10 @@ pandas = "*"
 [packages]
 django = "*"
 psycopg2-binary = "*"
+libsass = "*"
+django-compressor = "*"
+django-sass-processor = "*"
+django-redis = "*"
 
 [requires]
 python_version = "3.6"
