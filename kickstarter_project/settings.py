@@ -158,7 +158,7 @@ REDIS_URL = 'redis://{}:6379/1'.format(os.getenv('REDIS_HOST'))
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.getenv('REDIS_URL'),
+        'LOCATION': 'redis://' + os.getenv('REDIS_URL'),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient'
         },
