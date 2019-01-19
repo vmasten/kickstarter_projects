@@ -155,7 +155,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 
 # REDIS_URL = 'redis://{}:6379/1'.format(os.getenv('REDIS_HOST'))
-REDIS_URL = 'redis://{}:6379'.format(os.getenv('REDIS_HOST'))
+REDIS_URL = 'redis://{}:6379'.format(os.getenv('REDIS_URL'))
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
