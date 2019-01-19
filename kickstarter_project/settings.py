@@ -154,7 +154,7 @@ STATICFILES_FINDERS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'MEDIA')
 
-REDIS_URL = 'redis://{}:6379/1'.format(os.getenv('REDIS_HOST'))
+# REDIS_URL = 'redis://{}:6379/1'.format(os.getenv('REDIS_HOST'))
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
