@@ -16,12 +16,20 @@ df['launched'] = pd.to_datetime(df['launched'])
 df['name'] = df['name'].fillna('unknown')
 df = df.dropna(how='any')
 
-# db_protocol = 'postgresql'
-db_protocol = 'postgresql+psycopg2'
-db_host = os.environ.get('DB_HOST', '')
-db_user = os.environ.get('DB_USER', '')
-db_password = os.environ.get('DB_PASSWORD', '')
-db_name = os.environ.get('DB_NAME', '')
+
+if 'RDS_DB_NAME' in os.environ:
+    db_protocol = 'postgresql+psycopg2'
+    db_host = os.environ.get('RDS_HOSTNAME', '')
+    db_name = os.environ.get('RDS_DB_NAME', '')
+    db_password = os.environ.get('RDS_PASSWORD', '')
+    db_user = os.environ.get('RDS_USERNAME', '')
+else:
+    # db_protocol = 'postgresql'
+    db_protocol = 'postgresql+psycopg2'
+    db_host = os.environ.get('DB_HOST', '')
+    db_user = os.environ.get('DB_USER', '')
+    db_password = os.environ.get('DB_PASSWORD', '')
+    db_name = os.environ.get('DB_NAME', '')
 
 
 engine = create_engine('{}://{}:{}@{}:5432/{}'.format(
