@@ -9,7 +9,7 @@ class Project(models.Model):
     main_category = models.CharField(max_length=64, default='maincat')
     currency = models.CharField(max_length=16, default='USD')
     state = models.CharField(max_length=16, default='state')
-    country = models.CharField(max_length=4, default='country')
+    country = models.CharField(max_length=4, default='US')
     deadline = models.DateField(default='2020-2-20')
     launched = models.DateTimeField(default='2020-2-20 12:12:12')
     goal = models.FloatField(default='0.0')
