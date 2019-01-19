@@ -19,6 +19,7 @@ libsass = "*"
 django-compressor = "*"
 django-sass-processor = "*"
 django-redis = "*"
+awsebcli = "*"
 
 [requires]
 python_version = "3.6"

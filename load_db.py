@@ -16,7 +16,8 @@ df['launched'] = pd.to_datetime(df['launched'])
 df['name'] = df['name'].fillna('unknown')
 df = df.dropna(how='any')
 
-db_protocol = 'postgresql'
+# db_protocol = 'postgresql'
+db_protocol = 'postgresql+psycopg2'
 db_host = os.environ.get('DB_HOST', '')
 db_user = os.environ.get('DB_USER', '')
 db_password = os.environ.get('DB_PASSWORD', '')
